@@ -21,9 +21,8 @@ const sequelize = require ("../db/db.js")
        allowNull: false
      },
     fecha_compra: DataTypes.DATEONLY,
-    EmailUsuario: DataTypes.STRING,
+    emailUsuario: DataTypes.STRING,
     id_movil: DataTypes.INTEGER,
-    id_articulo: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Compras',

@@ -21,9 +21,10 @@ const sequelize = require ("../db/db.js")
     nombre: DataTypes.STRING,
     color: DataTypes.STRING,
     potencia: DataTypes.INTEGER,
+    id_compra: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Moviles',
+    modelName: 'movil',
   });
 
 // };
