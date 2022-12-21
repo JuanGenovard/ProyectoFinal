@@ -9,7 +9,6 @@ const sequelize = require ("../db/db.js")
      * The `models/index` file will call this method automatically.
      */
       static associate(models) {
-       Moviles.belongsTo(models.articulos, {foreignkey: 'id'})
     }
   }
   Moviles.init({
