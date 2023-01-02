@@ -1,5 +1,3 @@
-
-
 const usuarios = require("../models/usuarios");
 const crypto = require("node:crypto");
 

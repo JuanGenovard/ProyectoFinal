@@ -1,14 +1,58 @@
 const Usuarios = require("../models/Usuarios");
 
 const {
-    // assertValidContraseñaService,
-    // assertEmailIsUniqueService,
-    // assertEmailIsValid,
-    // createUsuariosService,
+    assertValidContraseñaService,
+    assertEmailIsUniqueService,
+    assertEmailIsValid,
+    createUsuariosService,
     encryptContraseña,
   } = require("../services/authServices")
 
   const jsonwebtoken = require ("jsonwebtoken"); 
+
+  async function authRegisterController(req, res) {
+    const body = req.body;
+    // validate Contraseña
+    try {
+        console.log(body.contraseña)
+      assertValidContraseñaService(body.contraseña);
+    } catch (error) {
+      console.error(error);
+      res.status(400).json({ message: "Contraseña incorrecta: " + error.message });
+      return;
+    }
+    // validate email is valid
+    try {
+      assertEmailIsValid(body.email);
+    } catch (error) {
+      console.error(error);
+      res.status(400).json({ message: "Email is invalid: " + error.message });
+      return;
+    }
+    // validate email is unique
+    try {
+        console.error(body.email)
+      await assertEmailIsUniqueService(body.email);
+    } catch (error) {
+      console.error(error);
+      res.status(400).json({
+        message: "Email is already registered: " + error.message,
+      });
+      return;
+    }
+    // save Usuarios
+/* Creating a new user and deleting the password from the response. */
+    try {
+      const UsuariosCreated = await createUsuariosService(body);
+      delete UsuariosCreated.Contraseña;
+      console.log(body)
+    //   delete UsuariosCreated._id;
+      res.status(201).json(UsuariosCreated);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: error.message });
+    }
+  }
 
   async function authLoginController(req, res) {
     
@@ -52,5 +96,5 @@ const {
 
   module.exports = {
     authLoginController,
-    // authRegisterController,
+    authRegisterController,
   };
