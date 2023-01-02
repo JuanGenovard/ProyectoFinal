@@ -10,6 +10,12 @@ module.exports = {
       nombre: "toni",
       id_rol: 1
     },
+      {
+      email: "Miquel@gmail.com",
+      contraseña: "123456",
+      nombre: "Miquel",
+      id_rol: 2
+    },
   ], {});
   },
 

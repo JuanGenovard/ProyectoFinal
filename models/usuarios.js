@@ -24,7 +24,8 @@ const sequelize = require ("../db/db.js")
     contraseña: DataTypes.STRING,
     nombre: DataTypes.STRING,
     id_rol: DataTypes.INTEGER
-  }, {
+  },
+  {
     sequelize,
     modelName: 'Usuarios',
   });
