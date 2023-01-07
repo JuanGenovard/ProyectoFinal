@@ -10,6 +10,12 @@ module.exports = {
        color:'Rojo',
        Potencia: 5
       },
+      {
+       id_movil: 2,
+       nombre:'Samsung 2',
+       color:'Verd',
+       Potencia: 15
+      },
     ],{})
   },
 
