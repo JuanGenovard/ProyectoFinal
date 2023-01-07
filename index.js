@@ -4,6 +4,16 @@ const router = require('./router');
 const PORT = 3001;
 app.use(express.json());
 const db = require ('./db/db.js')
+const cors = require("cors");
+
+//Config Cors Options aws
+var corsOptions = {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+  };
+  app.use(cors(corsOptions));
 
 app.use(router);
 

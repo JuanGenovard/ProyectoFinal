@@ -12,6 +12,7 @@ const {
 
   async function authRegisterController(req, res) {
     const body = req.body;
+    console.log(body);
     // validate Contraseña
     try {
         console.log(body.contraseña)
@@ -22,9 +23,12 @@ const {
       return;
     }
     // validate email is valid
+   /* A function that allows you to execute a block of code and if an error occurs, it will be caught
+   by the catch block. */
     try {
       assertEmailIsValid(body.email);
-    } catch (error) {
+    } /* Catching an error. */
+    catch (error) {
       console.error(error);
       res.status(400).json({ message: "Email is invalid: " + error.message });
       return;
@@ -44,7 +48,7 @@ const {
 /* Creating a new user and deleting the password from the response. */
     try {
       const UsuariosCreated = await createUsuariosService(body);
-      delete UsuariosCreated.Contraseña;
+      delete UsuariosCreated.password;
       console.log(body)
     //   delete UsuariosCreated._id;
       res.status(201).json(UsuariosCreated);
@@ -58,13 +62,17 @@ const {
     
 
     try {
-      const { email, contraseña } = req.body;
+      console.log(req.body)
+      const { email, password } = req.body;
+
+      console.log(email)
+      console.log(password)
     const UsuariosFound = await Usuarios.findOne({where :{ email: email }});
     if (!UsuariosFound) {
       res.status(401).json({ message: "La constraseña o el email son incorrectos" });
       return;
     }
-    const hashedContraseña = encryptContraseña(contraseña);
+    const hashedContraseña = encryptContraseña(password);
     if (hashedContraseña !== UsuariosFound.contraseña) {
       res.status(401).json({ message: "La contraseña o el email son incorrectos" });
       return;

@@ -2,7 +2,7 @@ const usuarios = require("../models/usuarios");
 const crypto = require("node:crypto");
 
 function assertValidContraseñaService(pass) {
-    if (pass.length < 8) {
+    if (pass&&pass.length < 8) {
       throw new Error("La contraseña debe tener al menos 8 caracteres");
     }
     // validate it has one lower case letter
