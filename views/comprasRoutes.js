@@ -7,7 +7,10 @@ const { isValidRolAdmin, authBearerMiddleware, isValidUsuario } = require("../mi
 
 router.get('/id/:email',authBearerMiddleware, isValidUsuario, comprasController.getComprasByEmail)
 
-router.get('/',authBearerMiddleware, isValidRolAdmin, comprasController.getAllCompras)
+router.get('/', 
+authBearerMiddleware,
+//  isValidRolAdmin,
+ comprasController.getAllCompras)
 
 router.post('/nuevocompras',authBearerMiddleware, comprasController.postNuevoCompra)
 

@@ -1,21 +1,15 @@
 const movil = require('../models/movil')
-const usuarios = require('../models/usuarios')
 
 const movilController = {};
 
 movilController.getMovil = async (req, res) => {
     try {
-        let email = req.params.email
-        let resp = await movil.findAll({ attributes: {exclude:['createdAt', 'updatedAt']},
-            where: {email: email},
-            include: {
-                model: compras,
-                attributes: ['id_compras', 'fecha_compra']
-            },
-            attributes: ['email', 'nombre']
+        let id = req.params.id
+        let resp = await movil.findAll({
+            where: {id_movil: id}
         })
             .then(resp => {
-                res.send(resp)
+                res.send(resp[0])
             })
     } catch (err) {
         res.send(err)
@@ -25,8 +19,7 @@ movilController.getMovil = async (req, res) => {
 movilController.getAllMovils = async (req, res) => {
     try {
         let resp = await movil.findAll({
-        })
-            .then(resp => {
+        }).then(resp => {
                 res.send(resp)
             })
     } catch (err) {

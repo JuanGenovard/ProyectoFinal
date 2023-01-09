@@ -26,14 +26,16 @@ const Usuarios = require("../models/Usuarios")
 
 const authBearerMiddleware = async (req, res, next) => {
   const { authorization } = req.headers;
+  
   // 'Bearer 1234'.split(' ') -> ['Bearer','1234']
   const [strategy, jwt] = authorization.split(" ");
+  
   try {
     if (strategy.toLowerCase() !== "bearer") {
       throw new Error("Invalid strategy");
     }
-    const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET || "tomatesasesinos");
-
+    console.log(process.env.JWT_SECRET)
+    const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET || "viscasantantoni");
     const created = payload.created;
 
     const timeElapsed = Date.now() - created;
@@ -41,7 +43,6 @@ const authBearerMiddleware = async (req, res, next) => {
       1000 * 60 * 60 * 24 * 30; // 30 days
     const isValid = timeElapsed && created && MAX_TIME &&
       (timeElapsed < MAX_TIME);
-
     if (!isValid) {
       throw new Error("el token ha expirado");
     }
@@ -63,7 +64,7 @@ const authBearerMiddleware = async (req, res, next) => {
 const isValidRolAdmin = (req, res, next) => {
   const { authorization } = req.headers;
   const [strategy, jwt] = authorization.split(" ");
-  const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET || "tomatesasesinos");
+  const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET || "viscasantantoni");
   // console.log(payload)
   if (payload.rol === 1) {
     next();

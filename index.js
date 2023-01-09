@@ -5,6 +5,7 @@ const PORT = 3001;
 app.use(express.json());
 const db = require ('./db/db.js')
 const cors = require("cors");
+require('dotenv').config()
 
 //Config Cors Options aws
 var corsOptions = {

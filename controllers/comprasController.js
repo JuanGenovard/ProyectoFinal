@@ -23,6 +23,7 @@ comprasController.getComprasByEmail = async (req, res) => {
 }
 
 comprasController.getAllCompras = async (req, res) => {
+    console.log("11111111111111111111111111111111111111111111111111111111111111111111")
     try {
         let resp = await compras.findAll({
         })

@@ -8,13 +8,15 @@ module.exports = {
        id_movil: 1,
        nombre:'Samsung',
        color:'Rojo',
-       Potencia: 5
+       precio: 275,
+       URL:'https://cdn-files.kimovil.com/phone_front/0001/02/thumb_1752_phone_front_big.jpeg'
       },
       {
        id_movil: 2,
        nombre:'Samsung 2',
        color:'Verd',
-       Potencia: 15
+       precio: 325,
+       URL:'https://cdn-files.kimovil.com/phone_front/0001/02/thumb_1752_phone_front_big.jpeg'
       },
     ],{})
   },

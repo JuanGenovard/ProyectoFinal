@@ -12,7 +12,8 @@ const {
 
   async function authRegisterController(req, res) {
     const body = req.body;
-    console.log(body);
+    body.id_rol = 2;
+
     // validate Contraseña
     try {
         console.log(body.contraseña)

@@ -5,6 +5,8 @@ const movilController = require('../controllers/movilController');
 
 const { isValidRolAdmin, authBearerMiddleware, isValidUsuario } = require("../middlewares/authMiddleware")
 
-router.get('/',authBearerMiddleware, isValidRolAdmin, movilController.getAllMovils)
+router.get('/', movilController.getAllMovils)
+
+router.get('/:id', movilController.getMovil )
 
 module.exports = router

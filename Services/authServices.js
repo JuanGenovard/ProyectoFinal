@@ -31,7 +31,7 @@ async function assertEmailIsUniqueService(email) {
   };
 
 async function createUsuariosService(UsuariosBody) {
-    delete UsuariosBody.rol;
+    // delete UsuariosBody.rol;
     const hash = encryptContraseña(UsuariosBody.contraseña);
     UsuariosBody.contraseña = hash;
     const Usuarios = await usuarios.create(UsuariosBody);

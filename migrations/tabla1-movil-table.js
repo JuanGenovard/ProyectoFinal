@@ -18,8 +18,11 @@ module.exports = {
       color: {
         type: Sequelize.STRING
       },
-      potencia: {
+      precio: {
         type: Sequelize.INTEGER
+      },
+      URL: {
+        type: Sequelize.STRING
       },
     });
   },
