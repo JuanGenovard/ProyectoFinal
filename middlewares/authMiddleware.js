@@ -34,10 +34,9 @@ const authBearerMiddleware = async (req, res, next) => {
     if (strategy.toLowerCase() !== "bearer") {
       throw new Error("Invalid strategy");
     }
-    console.log(process.env.JWT_SECRET)
     const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET || "viscasantantoni");
     const created = payload.created;
-
+    
     const timeElapsed = Date.now() - created;
     const MAX_TIME = Number(process.env.MAX_TIME_JWT_CADUCITY) ||
       1000 * 60 * 60 * 24 * 30; // 30 days
@@ -78,8 +77,6 @@ const isValidUsuario = async (req, res, next) => {
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
   let email = req.params.email
-  console.log(req.params.email)
-  console.log("payloadmail", payload.email)
   if (payload.email === email) {
     next();
   } else {

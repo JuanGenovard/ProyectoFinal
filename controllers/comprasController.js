@@ -1,4 +1,5 @@
-const compras = require('../models/compras')
+const compras = require('../models/compras');
+const Moviles = require('../models/movil');
 const usuarios = require('../models/usuarios')
 
 const comprasController = {};
@@ -23,13 +24,14 @@ comprasController.getComprasByEmail = async (req, res) => {
 }
 
 comprasController.getAllCompras = async (req, res) => {
-    console.log("11111111111111111111111111111111111111111111111111111111111111111111")
     try {
-        let resp = await compras.findAll({
-        })
-            .then(resp => {
-                res.send(resp)
-            })
+        const resp = await compras.findAll()
+        const listaCompras = []
+        for (let compra of resp) {
+            const movil = await Moviles.findOne({where: {id_movil: compra.id_movil}})
+            listaCompras.push({...compra.dataValues, movil})
+        }
+        res.send(listaCompras)
     } catch (err) {
         res.send(err)
         console.log(err)
@@ -39,7 +41,6 @@ comprasController.getAllCompras = async (req, res) => {
 comprasController.getComprasFromUsuario = async (req, res) => {
     try{
         let email = req.params.email
-        console.log(email)
         let resp = await usuarios.findAll({
             where: { email: email},
             include: {
@@ -51,7 +52,6 @@ comprasController.getComprasFromUsuario = async (req, res) => {
         res.send(resp)
     } catch (error) {
         res.send(error)
-        console.log(error)
     }
 }
 
@@ -62,7 +62,6 @@ comprasController.postNuevoCompra = async (req, res) => {
             fecha_pedido: data.fecha_pedido,
             EmailUsuario: data.EmailUsuario,
             id_movil: data.id_movil
-
         })
 
         res.send(resp)
@@ -71,24 +70,6 @@ comprasController.postNuevoCompra = async (req, res) => {
     }
 }
 
-comprasController.updateComprasById = async (req, res) => {
-    try {
-        let data = req.body
-        let resp = await compras.update(
-            {
-                fecha_compra: data.fecha_compra
-            },
-            {
-                where: { id_compra: data.id_compra }
-            }
-        )
-
-        res.send(resp)
-
-    } catch (err) {
-        res.send(err)
-    }
-}
 
 
 

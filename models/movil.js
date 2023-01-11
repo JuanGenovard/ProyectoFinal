@@ -20,7 +20,7 @@ const sequelize = require ("../db/db.js")
      },
     nombre: DataTypes.STRING,
     color: DataTypes.STRING,
-    precio: DataTypes.INTEGER,
+    precio: DataTypes.STRING,
     URL: DataTypes.STRING
   }, {
     timestamps: false,

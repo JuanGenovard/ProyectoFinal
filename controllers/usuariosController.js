@@ -1,4 +1,5 @@
-const usuarios = require('../models/usuarios')
+const usuarios = require('../models/usuarios');
+const { encryptContraseña } = require('../services/authServices');
 
 const usuariosController = {};
 
@@ -46,11 +47,10 @@ usuariosController.postNuevoUsuario = async (req, res) => {
 usuariosController.updateUsuarioById = async (req, res) => {
     try {
         let data = req.body
+        const hashedContraseña = encryptContraseña(data.password)
         let resp = await usuarios.update(
             {
-                email: data.email,
-                contraseña: data.contraseña,
-                nombre: data.nombre
+                contraseña: hashedContraseña,
             },
             {
                 where: { email: data.email }

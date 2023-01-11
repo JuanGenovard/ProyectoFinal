@@ -9,7 +9,7 @@ const sequelize = require ("../db/db.js")
      * The `models/index` file will call this method automatically.
      */
      static associate(models) {
-      Compras.hasOne(models.moviles, {foreignKey: 'id'});
+      Compras.hasOne(models.moviles, {foreignKey: 'id_movil'});
       Compras.hasOne(models.usuarios, {foreignKey: 'id'});
     }
   }

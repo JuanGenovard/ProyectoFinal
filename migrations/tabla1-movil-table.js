@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       precio: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       URL: {
         type: Sequelize.STRING

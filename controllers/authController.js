@@ -9,6 +9,7 @@ const {
   } = require("../services/authServices")
 
   const jsonwebtoken = require ("jsonwebtoken"); 
+const Roles = require("../models/roles");
 
   async function authRegisterController(req, res) {
     const body = req.body;
@@ -65,7 +66,6 @@ const {
     try {
       console.log(req.body)
       const { email, password } = req.body;
-
       console.log(email)
       console.log(password)
     const UsuariosFound = await Usuarios.findOne({where :{ email: email }});
@@ -85,17 +85,18 @@ const {
     if (secret.length < 10) {
       throw new Error("JWT_SECRET is not set");
     }
-  
+
     const jwt = jsonwebtoken.sign({
     //   uuid: UsuariosFound.uuid,
       email: UsuariosFound.email,
       created: Date.now(),
-      rol: UsuariosFound.id_rol,
     }, secret);
   
     res.status(200).json({
       message: "Login successful",
       jwt: jwt,
+      isAdmin: UsuariosFound.id_rol === 1,
+      username: UsuariosFound.nombre
     });
     } catch (error) {
       console.error(error);

@@ -8,7 +8,7 @@ router.get('/',usuariosController.getAllUsuarios)
 
 router.get('/id/:email',usuariosController.getUsuariosByEmail)
 
-router.put('/update/:email', authBearerMiddleware, isValidUsuario, usuariosController.updateUsuarioById)
+router.put('/update', usuariosController.updateUsuarioById)
 
 router.delete('/delete/:email',authBearerMiddleware, isValidRolAdmin, usuariosController.deleteUsuarioById)
 
