@@ -24,9 +24,6 @@ const Roles = require("../models/roles");
       res.status(400).json({ message: "Contraseña incorrecta: " + error.message });
       return;
     }
-    // validate email is valid
-   /* A function that allows you to execute a block of code and if an error occurs, it will be caught
-   by the catch block. */
     try {
       assertEmailIsValid(body.email);
     } /* Catching an error. */
@@ -85,9 +82,7 @@ const Roles = require("../models/roles");
     if (secret.length < 10) {
       throw new Error("JWT_SECRET is not set");
     }
-
     const jwt = jsonwebtoken.sign({
-    //   uuid: UsuariosFound.uuid,
       email: UsuariosFound.email,
       created: Date.now(),
     }, secret);

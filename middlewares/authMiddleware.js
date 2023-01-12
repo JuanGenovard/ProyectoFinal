@@ -2,30 +2,10 @@ const { isValidUsuariosAndContraseñas } = require("../services/authServices");
 const jsonwebtoken = require("jsonwebtoken");
 const Usuarios = require("../models/Usuarios")
 
-// const authBasicMiddleware = async (req, res, next) => {
-//   const { authorization } = req.headers;
-//   let isAuthorized = false;
-//   const [type, token] = authorization.split(" ");
-//   if (type !== "basic") {
-//     res.status(401).json({ message: "No se ha podido autentificar" });
-//     return;
-//   }
-//   const UsuariosAndPass = atob(token);
-//   const [Usuarios, Contraseñas] = UsuariosAndPass.split(":");
-
-//   if (await isValidUsuariosAndContraseñas(Usuarios, Contraseñas)) {
-//     isAuthorized = true;
-//   }
-
-//   if (isAuthorized) {
-//     next();
-//   } else {
-//     res.status(401).json({ message: "No se ha podido autentificar" });
-//   }
-// };
 
 const authBearerMiddleware = async (req, res, next) => {
   const { authorization } = req.headers;
+
   
   // 'Bearer 1234'.split(' ') -> ['Bearer','1234']
   const [strategy, jwt] = authorization.split(" ");
@@ -46,7 +26,7 @@ const authBearerMiddleware = async (req, res, next) => {
       throw new Error("el token ha expirado");
     }
 
-    // expose the payload to the next middlewares and controllers
+
     req.auth = payload;
 
 
@@ -61,10 +41,12 @@ const authBearerMiddleware = async (req, res, next) => {
 };
 
 const isValidRolAdmin = (req, res, next) => {
+  console.log(req.headers)
   const { authorization } = req.headers;
+  console.log(authorization)
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET || "viscasantantoni");
-  // console.log(payload)
+  console.log(payload);
   if (payload.rol === 1) {
     next();
   } else {

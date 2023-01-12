@@ -59,8 +59,8 @@ comprasController.postNuevoCompra = async (req, res) => {
     try {
         let data = req.body
         let resp = await compras.create({
-            fecha_pedido: data.fecha_pedido,
-            EmailUsuario: data.EmailUsuario,
+            fecha_compra: data.fecha_compra,
+            emailUsuario: data.emailUsuario,
             id_movil: data.id_movil
         })
 

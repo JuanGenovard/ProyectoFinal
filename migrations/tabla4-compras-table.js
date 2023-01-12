@@ -19,12 +19,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       createdAt: {
-        default:"2008-10-03 22:59:52",
-        type: Sequelize.DATE
+        default:"2008-10-03",
+        type: Sequelize.DATEONLY
       },
       updatedAt: {
-        default:"2008-10-03 22:59:52",
-        type: Sequelize.DATE
+        default:"2008-10-03",
+        type: Sequelize.DATEONLY
       },
       id_usuario: {
         type: Sequelize.INTEGER,

@@ -21,7 +21,6 @@ function assertValidContraseñaService(pass) {
 
 async function assertEmailIsUniqueService(email) {
   console.log("Hola soy la gran contraseña"+email)
-    // validate email is unique
     const Usuarios = await usuarios.findOne({
       where: {email: email}
   });
