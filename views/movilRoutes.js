@@ -3,7 +3,7 @@ const router = express.Router();
 
 const movilController = require('../controllers/movilController');
 
-const { isValidRolAdmin, authBearerMiddleware, isValidUsuario } = require("../middlewares/authMiddleware")
+// const { isValidRolAdmin, authBearerMiddleware, isValidUsuario } = require("../middlewares/authMiddleware")
 
 router.get('/', movilController.getAllMovils)
 

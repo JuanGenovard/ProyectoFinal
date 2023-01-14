@@ -41,12 +41,9 @@ const authBearerMiddleware = async (req, res, next) => {
 };
 
 const isValidRolAdmin = (req, res, next) => {
-  console.log(req.headers)
   const { authorization } = req.headers;
-  console.log(authorization)
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET || "viscasantantoni");
-  console.log(payload);
   if (payload.rol === 1) {
     next();
   } else {
@@ -56,6 +53,7 @@ const isValidRolAdmin = (req, res, next) => {
 
 const isValidUsuario = async (req, res, next) => {
   const { authorization } = req.headers;
+  console.log(authorization.split(" "))
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
   let email = req.params.email

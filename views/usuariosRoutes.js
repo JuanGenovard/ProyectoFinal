@@ -4,13 +4,13 @@ const { isValidRolAdmin, authBearerMiddleware, isValidUsuario } = require("../mi
 
 const usuariosController = require('../controllers/usuariosController')
 
-router.get('/',usuariosController.getAllUsuarios)
+// router.get('/',usuariosController.getAllUsuarios)
 
-router.get('/id/:email',usuariosController.getUsuariosByEmail)
+// router.get('/id/:email',usuariosController.getUsuariosByEmail)
 
 router.put('/update', usuariosController.updateUsuarioById)
 
-router.delete('/delete/:email',authBearerMiddleware, isValidRolAdmin, usuariosController.deleteUsuarioById)
+// router.delete('/delete/:email',authBearerMiddleware, isValidRolAdmin, usuariosController.deleteUsuarioById)
 
 
 

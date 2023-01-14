@@ -3,31 +3,31 @@ const { encryptContraseña } = require('../services/authServices');
 
 const usuariosController = {};
 
-usuariosController.getAllUsuarios = async (req, res) => {
-    try {
-        let resp = await usuarios.findAll({attributes: {exclude:['createdAt', 'updatedAt']},
-        })
-            .then(resp => {
-                res.send(resp)
-            })
-    } catch (err) {
-        res.send(err)
-    }
-}
+// usuariosController.getAllUsuarios = async (req, res) => {
+//     try {
+//         let resp = await usuarios.findAll({attributes: {exclude:['createdAt', 'updatedAt']},
+//         })
+//             .then(resp => {
+//                 res.send(resp)
+//             })
+//     } catch (err) {
+//         res.send(err)
+//     }
+// }
 
-usuariosController.getUsuariosByEmail = async (req, res) => {
-    try {
-        let email = req.params.email
-        let resp = await usuarios.findOne({ attributes: {exclude:['createdAt', 'updatedAt']},
-            where: {email: email}
-        })
-            .then(resp => {
-                res.send(resp)
-            })
-    } catch (err) {
-        res.send(err)
-    }
-}
+// usuariosController.getUsuariosByEmail = async (req, res) => {
+//     try {
+//         let email = req.params.email
+//         let resp = await usuarios.findOne({ attributes: {exclude:['createdAt', 'updatedAt']},
+//             where: {email: email}
+//         })
+//             .then(resp => {
+//                 res.send(resp)
+//             })
+//     } catch (err) {
+//         res.send(err)
+//     }
+// }
 usuariosController.postNuevoUsuario = async (req, res) => {
     try {
         let data = req.body
@@ -63,22 +63,22 @@ usuariosController.updateUsuarioById = async (req, res) => {
         res.send(err)
     }
 }
-usuariosController.deleteUsuarioById = async (req, res) => {
-    try {
-        let email = req.params.email
-        let resp = await usuarios.destroy({
-            where: { email: email }
-        })
+// usuariosController.deleteUsuarioById = async (req, res) => {
+//     try {
+//         let email = req.params.email
+//         let resp = await usuarios.destroy({
+//             where: { email: email }
+//         })
 
-        if (resp == 1) {
-            res.send("El perfil ha sido eliminado")
-        } else {
-            res.send("No se ha podido eliminar el perfil")
-        }
+//         if (resp == 1) {
+//             res.send("El perfil ha sido eliminado")
+//         } else {
+//             res.send("No se ha podido eliminar el perfil")
+//         }
 
-    } catch (err) {
-        res.send(err)
-    }
-}
+//     } catch (err) {
+//         res.send(err)
+//     }
+// }
 
 module.exports = usuariosController

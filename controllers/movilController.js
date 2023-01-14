@@ -23,9 +23,7 @@ movilController.getAllMovils = async (req, res) => {
                 res.send(resp)
             })
     } catch (err) {
-        res.send(err)
-        console.log(err)
-    }
+        res.send(err)    }
 }
 
 module.exports = movilController

@@ -3,9 +3,7 @@ const router = express.Router();
 
 const comprasController = require('../controllers/comprasController');
 
-const { isValidRolAdmin, authBearerMiddleware, isValidUsuario } = require("../middlewares/authMiddleware")
-
-router.get('/id/:email',authBearerMiddleware, isValidUsuario, comprasController.getComprasByEmail)
+const { authBearerMiddleware } = require("../middlewares/authMiddleware")
 
 router.get('/',authBearerMiddleware, comprasController.getAllCompras)
 

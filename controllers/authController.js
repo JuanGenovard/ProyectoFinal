@@ -17,10 +17,8 @@ const Roles = require("../models/roles");
 
     // validate Contraseña
     try {
-        console.log(body.contraseña)
       assertValidContraseñaService(body.contraseña);
     } catch (error) {
-      console.error(error);
       res.status(400).json({ message: "Contraseña incorrecta: " + error.message });
       return;
     }
@@ -28,16 +26,13 @@ const Roles = require("../models/roles");
       assertEmailIsValid(body.email);
     } /* Catching an error. */
     catch (error) {
-      console.error(error);
       res.status(400).json({ message: "Email is invalid: " + error.message });
       return;
     }
     // validate email is unique
     try {
-        console.error(body.email)
       await assertEmailIsUniqueService(body.email);
     } catch (error) {
-      console.error(error);
       res.status(400).json({
         message: "Email is already registered: " + error.message,
       });
@@ -48,11 +43,9 @@ const Roles = require("../models/roles");
     try {
       const UsuariosCreated = await createUsuariosService(body);
       delete UsuariosCreated.password;
-      console.log(body)
     //   delete UsuariosCreated._id;
       res.status(201).json(UsuariosCreated);
     } catch (error) {
-      console.error(error);
       res.status(500).json({ message: error.message });
     }
   }
@@ -61,10 +54,7 @@ const Roles = require("../models/roles");
     
 
     try {
-      console.log(req.body)
       const { email, password } = req.body;
-      console.log(email)
-      console.log(password)
     const UsuariosFound = await Usuarios.findOne({where :{ email: email }});
     if (!UsuariosFound) {
       res.status(401).json({ message: "La constraseña o el email son incorrectos" });
@@ -77,7 +67,6 @@ const Roles = require("../models/roles");
     }
   
     const secret = process.env.JWT_SECRET || 'viscasantantoni';
-        console.log(secret)
   
     if (secret.length < 10) {
       throw new Error("JWT_SECRET is not set");
@@ -94,7 +83,6 @@ const Roles = require("../models/roles");
       username: UsuariosFound.nombre
     });
     } catch (error) {
-      console.error(error);
       
     }
   }
