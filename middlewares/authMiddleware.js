@@ -1,6 +1,6 @@
 // const { isValidUsuariosAndContraseñas } = require("../services/authServices");
 const jsonwebtoken = require("jsonwebtoken");
-const Usuarios = require("../models/Usuarios")
+const Usuarios = require("../models/usuarios")
 
 
 const authBearerMiddleware = async (req, res, next) => {
