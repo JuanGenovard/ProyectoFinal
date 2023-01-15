@@ -1,33 +1,28 @@
 {
-  "railway": {
-    "username": "root",
-    "password": "mfUOUL2KqMkmIjr9yhJc",
-    "database": "railway",
-    "host": "containers-us-west-65.railway.app",
-    "dialect": "mysql",
-    "port" : "7242"
-  },
+
   "development": {
     "username": "root",
-    "password": "root",
-    "database": "movilestore",
-    "host": "127.0.0.1",
+    "password": "8da7AEFN3iiJMUisjgaC",
+    "database": "railway",
+    "host": "containers-us-west-197.railway.app",
     "dialect": "mysql",
-    "PORT": "3306"
+    "port": "6276"
   },
   "test": {
     "username": "root",
-    "password": "root",
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "password": "8da7AEFN3iiJMUisjgaC",
+    "database": "railway",
+    "host": "containers-us-west-197.railway.app",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "root",
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "password": "8da7AEFN3iiJMUisjgaC",
+    "database": "railway",
+    "host": "containers-us-west-197.railway.app",
+    "dialect": "mysql",
+    "port" : "6276"
+    
   }
   
 }

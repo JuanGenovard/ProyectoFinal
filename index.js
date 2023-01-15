@@ -1,11 +1,12 @@
 const express = require ('express');
 const app = express();
 const router = require('./router');
-const PORT = 3001;
+require('dotenv').config()
+const PORT = process.env.PORT;
 app.use(express.json());
 const db = require ('./db/db.js')
 const cors = require("cors");
-require('dotenv').config()
+
 
 //Config Cors Options aws
 var corsOptions = {
