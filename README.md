@@ -105,6 +105,9 @@ GET - localhost:3001/movils/:id
 
 
  # Relacion entre tablas
+ 
+ ![Screenshot_7](https://user-images.githubusercontent.com/114061110/212537610-b10388e1-5015-4d2d-ad66-e0c53e01a869.png)
+
 
 
  # Autor:
