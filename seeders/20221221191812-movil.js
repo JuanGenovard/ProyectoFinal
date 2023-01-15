@@ -20,7 +20,7 @@ module.exports = {
       },
       {
        id_movil: 3,
-       nombre:'Ihone 11',
+       nombre:'Iphone 11',
        color:'Lila',
        precio: '425€',
        URL:'https://storage.googleapis.com/yoigo-statics/img/terminales/ImgMain_iPhone12_Purple_FB.png'
