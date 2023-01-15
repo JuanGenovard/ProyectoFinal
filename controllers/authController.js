@@ -6,7 +6,7 @@ const {
     assertEmailIsValid,
     createUsuariosService,
     encryptContraseña,
-  } = require("../services/authServices")
+  } = require("../Services/authServices")
 
   const jsonwebtoken = require ("jsonwebtoken"); 
 const Roles = require("../models/roles");

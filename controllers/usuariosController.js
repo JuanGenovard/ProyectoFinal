@@ -1,5 +1,5 @@
 const usuarios = require('../models/usuarios');
-const { encryptContraseña } = require('../services/authServices');
+const { encryptContraseña } = require('../Services/authServices');
 
 const usuariosController = {};
 
