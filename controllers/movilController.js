@@ -26,4 +26,23 @@ movilController.getAllMovils = async (req, res) => {
         res.send(err)    }
 }
 
+movilController.deleteMovilById = async (req, res) => {
+    try {
+        let id_movil = req.params.id_movil
+        let resp = await movil.destroy({
+            where: { id: id_movil }
+        })
+        console.log(resp)
+
+        if (resp == 1) {
+            res.send("El perfil ha sido eliminado")
+        } else {
+            res.send("No se ha podido eliminar el perfil")
+        }
+
+    } catch (err) {
+        res.send(err)
+    }
+}
+
 module.exports = movilController

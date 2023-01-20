@@ -9,4 +9,6 @@ router.get('/', movilController.getAllMovils)
 
 router.get('/:id', movilController.getMovil )
 
+router.delete('/movils/:id', movilController.deleteMovilById )
+
 module.exports = router
