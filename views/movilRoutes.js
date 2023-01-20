@@ -3,12 +3,12 @@ const router = express.Router();
 
 const movilController = require('../controllers/movilController');
 
-// const { isValidRolAdmin, authBearerMiddleware, isValidUsuario } = require("../middlewares/authMiddleware")
+const { isValidRolAdmin, authBearerMiddleware } = require("../middlewares/authMiddleware")
 
 router.get('/', movilController.getAllMovils)
 
-router.get('/:id', movilController.getMovil )
+router.get('/:id', movilController.getMovil)
 
-router.delete('/movils/:id', movilController.deleteMovilById )
+router.delete('/movils/:id', isValidRolAdmin, authBearerMiddleware, movilController.deleteMovilById)
 
 module.exports = router

@@ -1,6 +1,5 @@
-// const { isValidUsuariosAndContraseñas } = require("../services/authServices");
 const jsonwebtoken = require("jsonwebtoken");
-// const Usuarios = require("../models/usuarios")
+
 
 
 const authBearerMiddleware = async (req, res, next) => {
@@ -53,17 +52,5 @@ const isValidRolAdmin = (req, res, next) => {
   }
 }
 
-const isValidUsuario = async (req, res, next) => {
-  const { authorization } = req.headers;
-  const [strategy, jwt] = authorization.split(" ");
-  const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
-  let email = req.params.email
-  if (payload.email === email) {
-    next();
-  } else {
-    res.status(403).json({ message: "You are not authorized" });
-  }
-}
 
-
-module.exports = { authBearerMiddleware, isValidRolAdmin, isValidUsuario };
+module.exports = { authBearerMiddleware, isValidRolAdmin };
