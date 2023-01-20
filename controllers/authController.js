@@ -73,6 +73,7 @@ const Roles = require("../models/roles");
     }
     const jwt = jsonwebtoken.sign({
       email: UsuariosFound.email,
+      rol: UsuariosFound.id_rol,
       created: Date.now(),
     }, secret);
   

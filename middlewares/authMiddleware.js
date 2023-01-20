@@ -6,17 +6,17 @@ const jsonwebtoken = require("jsonwebtoken");
 const authBearerMiddleware = async (req, res, next) => {
   const { authorization } = req.headers;
 
-  
+
   // 'Bearer 1234'.split(' ') -> ['Bearer','1234']
   const [strategy, jwt] = authorization.split(" ");
-  
+
   try {
     if (strategy.toLowerCase() !== "bearer") {
       throw new Error("Invalid strategy");
     }
     const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET || "viscasantantoni");
     const created = payload.created;
-    
+
     const timeElapsed = Date.now() - created;
     const MAX_TIME = Number(process.env.MAX_TIME_JWT_CADUCITY) ||
       1000 * 60 * 60 * 24 * 30; // 30 days
@@ -42,8 +42,10 @@ const authBearerMiddleware = async (req, res, next) => {
 
 const isValidRolAdmin = (req, res, next) => {
   const { authorization } = req.headers;
+  console.log(req.headers)
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET || "viscasantantoni");
+  console.log(payload);
   if (payload.rol === 1) {
     next();
   } else {
@@ -53,7 +55,6 @@ const isValidRolAdmin = (req, res, next) => {
 
 const isValidUsuario = async (req, res, next) => {
   const { authorization } = req.headers;
-  console.log(authorization.split(" "))
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
   let email = req.params.email
