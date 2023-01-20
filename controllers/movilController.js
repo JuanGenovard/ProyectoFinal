@@ -28,9 +28,9 @@ movilController.getAllMovils = async (req, res) => {
 
 movilController.deleteMovilById = async (req, res) => {
     try {
-        let id_movil = req.params.id_movil
+        let id_movil = req.params.id
         let resp = await movil.destroy({
-            where: { id: id_movil }
+            where: { id_movil: id_movil }
         })
         console.log(resp)
 
