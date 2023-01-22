@@ -2,7 +2,7 @@
 
   "development": {
     "username": "root",
-    "password": "ilr4QzVEYGC2TCoYeVEX",
+    "password": "1NXQtXKvFD3evE5aVqmO",
     "database": "railway",
     "host": "containers-us-west-50.railway.app",
     "dialect": "mysql",
@@ -10,14 +10,14 @@
   },
   "test": {
     "username": "root",
-    "password": "ilr4QzVEYGC2TCoYeVEX",
+    "password": "1NXQtXKvFD3evE5aVqmO",
     "database": "railway",
     "host": "containers-us-west-50.railway.app",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "ilr4QzVEYGC2TCoYeVEX",
+    "password": "1NXQtXKvFD3evE5aVqmO",
     "database": "railway",
     "host": "containers-us-west-50.railway.app",
     "dialect": "mysql",
