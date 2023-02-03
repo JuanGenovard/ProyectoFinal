@@ -48,7 +48,6 @@ movilController.deleteMovilById = async (req, res) => {
 movilController.postNewMovil = async ( req, res) => {
     try {
         let data = req.body
-        console.log(data)
         let resp = await movil.create({
             id_movil: data.id_movil,
             nombre: data.nombre,
