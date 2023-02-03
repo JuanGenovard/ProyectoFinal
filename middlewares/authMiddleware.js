@@ -3,10 +3,12 @@ const jsonwebtoken = require("jsonwebtoken");
 
 
 const authBearerMiddleware = async (req, res, next) => {
+  /* Destructuring the authorization property from the headers object. */
   const { authorization } = req.headers;
 
 
   // 'Bearer 1234'.split(' ') -> ['Bearer','1234']
+/* Splitting the string into an array. */
   const [strategy, jwt] = authorization.split(" ");
 
   try {

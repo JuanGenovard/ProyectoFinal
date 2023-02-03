@@ -11,4 +11,6 @@ router.get('/:id', movilController.getMovil)
 
 router.delete('/movils/:id', isValidRolAdmin, authBearerMiddleware, movilController.deleteMovilById)
 
+router.post('/newmovil', isValidRolAdmin, authBearerMiddleware, movilController.postNewMovil)
+
 module.exports = router
