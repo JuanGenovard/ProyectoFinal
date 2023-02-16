@@ -23,7 +23,7 @@ module.exports = {
        nombre:'Iphone 11',
        color:'Lila',
        precio: '425€',
-       URL:'https://storage.googleapis.com/yoigo-statics/img/terminales/ImgMain_iPhone12_Purple_FB.png'
+       URL:'https://m.media-amazon.com/images/I/71QE00iB9IL._AC_SX522_.jpg'
       },
       {
        id_movil: 4,
@@ -44,7 +44,7 @@ module.exports = {
        nombre:'Samsung Galaxy s22',
        color:'Blanco',
        precio: '275€',
-       URL:'https://storage.googleapis.com/yoigo-statics/img/terminales/ImgMain_S22-White-FB.png'
+       URL:'https://www.powerplanetonline.com/cdnassets/samsung_galaxy_s22_8gb_128gb_blanco_001_l.jpg'
       },
       {
        id_movil: 7,
