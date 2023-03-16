@@ -16,6 +16,20 @@ movilController.getMovil = async (req, res) => {
     }
 }
 
+movilController.getMovilByNombre = async (req, res) => {
+    try {
+        let nombre = req.params.nombre
+        let resp = await movil.findAll({
+            where: {nombre: nombre}
+        })
+        then(resp => {
+            resp.send(resp[0])
+        })
+    } catch (err) {
+        res.send(err)
+    }
+}
+
 movilController.getAllMovils = async (req, res) => {
     try {
         let resp = await movil.findAll({

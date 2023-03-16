@@ -9,6 +9,8 @@ router.get('/', movilController.getAllMovils)
 
 router.get('/:id', movilController.getMovil)
 
+router.get('/:nombre', movilController.getMovilByNombre)
+
 router.delete('/movils/:id', isValidRolAdmin, authBearerMiddleware, movilController.deleteMovilById)
 
 router.post('/newmovil', isValidRolAdmin, authBearerMiddleware, movilController.postNewMovil)
